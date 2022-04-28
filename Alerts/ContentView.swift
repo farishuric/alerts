@@ -58,14 +58,6 @@ struct ContentView: View {
                 
                 Spacer()
                 
-                //                NavigationLink {
-                //                    CameraView()
-                //                } label: {
-                //                    Text("Open Camera")
-                //                }
-                //
-                //                Spacer()
-                
                 NavigationLink {
                     AlertView()
                 } label: {
@@ -73,8 +65,6 @@ struct ContentView: View {
                 }
                 
                 Spacer()
-                
-                
             }
             .alert(item: $alert) { $0.alert }
         }
