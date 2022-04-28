@@ -12,50 +12,73 @@ struct ContentView: View {
     @State var alert: AlertType?
     
     var body: some View {
-        VStack {
-            
-            Spacer()
-            
-            Button {
-                alert = .ok(
-                    title: "This is OK alert",
-                    message: "This alert will show only 'OK' button."
-                )
-            } label: {
-                Text("OK Alert")
-            }
-            
-            Spacer()
-            
-            Button {
-                alert = .singleButton(
-                    title: "Single button alert",
-                    message: "This alert will show one button.",
-                    dismissButton: .default(
-                        Text("Okay")
+        
+        NavigationView {
+            VStack {
+                
+                Spacer()
+                
+                Button {
+                    alert = .ok(
+                        title: "This is OK alert",
+                        message: "This alert will show only 'OK' button."
                     )
-                )
-            } label: {
-                Text("Single button alert")
+                } label: {
+                    Text("OK Alert")
+                }
+                
+                Spacer()
+                
+                Button {
+                    alert = .singleButton(
+                        title: "Single button alert",
+                        message: "This alert will show one button.",
+                        dismissButton: .default(
+                            Text("Okay")
+                        )
+                    )
+                } label: {
+                    Text("Single button alert")
+                }
+                
+                Spacer()
+                
+                Button {
+                    alert = .twoButtons(
+                        title: "Two buttons alert",
+                        message: "This alert will show two buttons.",
+                        primaryButton: .destructive(Text("Cancel")),
+                        secondaryButton: .default(Text("Save"))
+                    )
+                } label: {
+                    Text("OK Alert")
+                }
+                
+                
+                
+                Spacer()
+                
+                //                NavigationLink {
+                //                    CameraView()
+                //                } label: {
+                //                    Text("Open Camera")
+                //                }
+                //
+                //                Spacer()
+                
+                NavigationLink {
+                    AlertView()
+                } label: {
+                    Text("Open AlertView")
+                }
+                
+                Spacer()
+                
+                
             }
-            
-            Spacer()
-            
-            Button {
-                alert = .twoButtons(
-                    title: "Two buttons alert",
-                    message: "This alert will show two buttons.",
-                    primaryButton: .destructive(Text("Cancel")),
-                    secondaryButton: .default(Text("Save"))
-                )
-            } label: {
-                Text("OK Alert")
-            }
-            
-            Spacer()
-
+            .alert(item: $alert) { $0.alert }
         }
-        .alert(item: $alert) { $0.alert }
+        
     }
 }
 
